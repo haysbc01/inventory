@@ -1,0 +1,33 @@
+.jumbotron{
+  padding-top: 0px;
+}
+
+.button {
+  height: 50px;
+  margin-left: 10%;
+  width: 80%;
+}
+
+h4 {
+  display: inline-block;
+}
+
+.selected{
+  position: absolute;
+  left: 50%;
+  margin: 0;
+}
+
+#pullSheet {
+  position: absolute;
+  right: 50%;
+  width: 50%;
+}
+
+.pageTitle {
+  text-align: center;
+}
+
+.qInput {
+  width: 50px;
+}
