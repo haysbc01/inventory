@@ -42,14 +42,14 @@
 
         <div ng-class="{'selected' : createPull}">
 
-          <button class="button" type="button" name="button" ng-click="glasses =! glasses">Glassware Inventory</button>
+          <button class="button" type="button" name="button" ng-click="glasses =! glasses"><span class="glyphicon glyphicon-menu-down pull-left"></span>Glassware Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
             <div ng-repeat="glassItem in home.glassInventory">
               <h4 ng-show="glasses">
                 <img class="col-xs-1 img-responsive" ng-src="{{glassItem.img}}"> Name : {{glassItem.name}} || Quantity : {{glassItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{glassItem.itemUrl}}">{{glassItem.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(glassItem)">Edit: {{glassItem.name}}</button><button class="pull-right btn btn-success" ng-show="createPull" ng-click="home.addToPull(glassItem)"><input class="qInput" type="number" name="" value="" placeholder="Qty."> Pull </button>
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="plates =! plates">Plate Inventory</button>
+            <button class="button" type="button" name="button" ng-click="plates =! plates"><span class="glyphicon glyphicon-menu-down pull-left"></span>Plate Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
             <div ng-repeat="plateItem in home.plateInventory">
               <h4 ng-show="plates">
@@ -57,7 +57,7 @@
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="disposable =! disposable">Disposable Inventory</button>
+            <button class="button" type="button" name="button" ng-click="disposable =! disposable"><span class="glyphicon glyphicon-menu-down pull-left"></span>Disposable Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
             <div ng-repeat="disposableItem in home.disInventory">
               <h4 ng-show="disposable">
@@ -65,7 +65,7 @@
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="passing =! passing">Passing Tray Inventory</button>
+            <button class="button" type="button" name="button" ng-click="passing =! passing"><span class="glyphicon glyphicon-menu-down pull-left"></span>Passing Tray Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
             <div ng-repeat="passItem in home.passingInventory">
               <h4 ng-show="passing">
@@ -73,7 +73,7 @@
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="TandC =! TandC">Tables and Chairs Inventory</button>
+            <button class="button" type="button" name="button" ng-click="TandC =! TandC"><span class="glyphicon glyphicon-menu-down pull-left"></span>Tables and Chairs Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
             <div ng-repeat="TCItem in home.TandCinventory">
               <h4 ng-show="TandC">
@@ -81,7 +81,7 @@
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="offsite =! offsite">Offsite Inventory</button>
+            <button class="button" type="button" name="button" ng-click="offsite =! offsite"><span class="glyphicon glyphicon-menu-down pull-left"></span>Offsite Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
             <div ng-repeat="offItem in home.offsiteInventory">
               <h4 ng-show="offsite">
