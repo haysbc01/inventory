@@ -61,10 +61,16 @@ angular.module("inventory")
     }
 
     home.addToPull = function(pullItem) {
-      pullSheet[home.pull].push(home.newPullItem)
+      home.PullSheet.items.push(home.newPullItem)
 
-      home.newPullItem = {};
+      
     }
+
+    // home.addToPull = function(pullItem) {
+    //   home.newPullSheet.items.push(home.newPullItem)
+    //
+    //   home.newPullItem = {};
+    // }
 
 
 
