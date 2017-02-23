@@ -30,7 +30,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="heading">{{home.greeting}} : Inventory</h1>
+          <h1 class="heading">{{home.greeting}} Inventory</h1>
         </div>
       </div>
 
@@ -39,19 +39,25 @@
         <button class="btn btn-default"type="button" name="button" ng-click="edit =! edit" ng-hide="createPull">Edit Inventory Item</button>
         <button class="btn btn-default"type="button" name="button" ng-click="home.addInventory(addItem)" ng-hide="createPull">Add Item to Inventory</button>
         <button class="btn btn-default"type="button" name="button" ng-click="home.addInventoryClass(addClass)" ng-hide="createPull">Add Inventory Class</button>
-        <button ng-click="home.addInventoryClass(addClass); addInv =! addInv" class="btn btn-default"type="button" name="button" ><a href="pull.html">Create Pull Sheet</a></button>
+
 
       <!-- <div ng-repeat="(ListDrop, ListArray) in ctrl.floorTen"> -->
 
+      <div class="" ng-repeat="(ListDrop, ListArray) in home.floorTen">
 
-        <button class="button" type="button" name="button" ><span class="glyphicon glyphicon-menu-down pull-left"></span>{{floorTen[newInv]}}<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+        <button ng-model="home.newItem" class="button" type="button" name="button" ><span class="glyphicon glyphicon-menu-down pull-left"></span> <span>{{ListDrop}}</span><span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
+        <div class="" ng-repeat="item in ListArray">
+          <img class="col-xs-1 img-responsive" ng-src="{{ListArray.img}}"> Name : {{ListArray.name}} || Quantity : {{ListArray.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{ListArray.itemUrl}}">{{ListArray.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{ListArray.name}}</button>
+        </div>
+
+      </div>
         <!-- <button  ng-repeat="(ListDrop, ListArray) in ctrl.floorTen" class="button" type="button" name="button">{{ListDrop.name}}</button> -->
           <!-- <div ng-repeat="item in ListArray">
             <h4 ng-show="">
               <img class="col-xs-1 img-responsive" ng-src="{{item.img}}"> Name : {{item.name}} || Quantity : {{item.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{item.itemUrl}}">{{item.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{item.name}}</button>
             </h4>
-          </div> -->
+          </div>
       </div>
 
 
@@ -64,48 +70,7 @@
               </h4>
             </div>
 
-            <button class="button" type="button" name="button" ng-click="plates =! plates"><span class="glyphicon glyphicon-menu-down pull-left"></span>Plate Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
-            <div ng-repeat="plateItem in home.plateInventory">
-              <h4 ng-show="plates">
-                <img class="col-xs-1 img-responsive" ng-src="{{plateItem.img}}"> Name : {{plateItem.name}} || Quantity : {{plateItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{plateItem.itemUrl}}">{{plateItem.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(plateItem)">Edit: {{plateItem.name}}</button>
-              </h4>
-            </div>
-
-            <button class="button" type="button" name="button" ng-click="disposable =! disposable"><span class="glyphicon glyphicon-menu-down pull-left"></span>Disposable Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
-
-            <div ng-repeat="disposableItem in home.disInventory">
-              <h4 ng-show="disposable">
-                <img class="col-xs-1 img-responsive" ng-src="{{disposableItem.img}}"> Name : {{disposableItem.name}} || Quantity : {{disposableItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{disposableItem.itemUrl}}">{{disposableItem.purchasedFrom}}</a></span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(disposableItem)">Edit: {{disposableItem.name}}</button>
-              </h4>
-            </div>
-
-            <button class="button" type="button" name="button" ng-click="passing =! passing"><span class="glyphicon glyphicon-menu-down pull-left"></span>Passing Tray Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
-
-            <div ng-repeat="passItem in home.passingInventory">
-              <h4 ng-show="passing">
-                <img class="col-xs-1 img-responsive" ng-src="{{passItem.img}}"> Name : {{passItem.name}} || Quantity : {{passItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{passItem.itemUrl}}">{{passItem.purchasedFrom}}</a></span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(passItem)">Edit: {{passItem.name}}</button>
-              </h4>
-            </div>
-
-            <button class="button" type="button" name="button" ng-click="TandC =! TandC"><span class="glyphicon glyphicon-menu-down pull-left"></span>Tables and Chairs Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
-
-            <div ng-repeat="TCItem in home.TandCinventory">
-              <h4 ng-show="TandC">
-                <img class="col-xs-1 img-responsive" ng-src="{{TCItem.img}}"> Name : {{TCItem.name}} || Quantity : {{TCItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{TCItem.itemUrl}}">{{TCItem.purchasedFrom}}</a></span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(TCItem)">Edit: {{TCItem.name}}</button>
-              </h4>
-            </div>
-
-            <button class="button" type="button" name="button" ng-click="offsite =! offsite"><span class="glyphicon glyphicon-menu-down pull-left"></span>Offsite Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
-
-            <div ng-repeat="offItem in home.offsiteInventory">
-              <h4 ng-show="offsite">
-                <img class="col-xs-1 img-responsive" ng-src="{{offItem.img}}"> Name : {{offItem.name}} || Quantity : {{offItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{offItem.itemUrl}}">{{offItem.purchasedFrom}}</a></span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(offItem)">Edit: {{offItem.name}}</button>
-              </h4>
-            </div>
-
-          </div>
-        </div> -->
 
 
 <!-- Edit Inventory Modal -->
@@ -162,20 +127,17 @@
 
               <!-- modal dropdown -->
                   <h6>New Item Category : </h6><select ng-model="home.inv">
-                    <option value="glasses">New Glassware</option>
-                    <option value="plates">New Plate</option>
-                    <option value="disposable">New Disposable Item</option>
-                    <option value="passing">New Passing Tray</option>
-                    <option value="TandC">New Tables and Chairs</option>
-                    <option value="offsite">New Offsite Item</option>
+                    <div class="" ng-repeat="(ListDrop, ListArray) in home.floorTen">
 
+                      <option ng-model="home.inv" value="{{ListDrop}}">{{ListDrop}}</option>
+                    </div>
                   </select>
 
 
 
                 </div>
                 <div class="modal-footer">
-                  <button ng-click="home.saveAddedInventory()" type="button" class="btn btn-primary">Save changes</button>
+                  <button ng-click="home.saveAddedCustomInventory()" type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>

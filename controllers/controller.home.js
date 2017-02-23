@@ -16,6 +16,8 @@ angular.module("inventory")
     home.TandCinventory = floorTen.TandC;
     home.offsiteInventory = floorTen.offsite;
 
+    home.floorTen = floorTen.inventories;
+
     home.newInventory = floorTen.inventoryFact;
 
     home.pullItems = pullSheet.pullSheet;
@@ -37,12 +39,33 @@ angular.module("inventory")
   home.addInventoryClass = function() {
     var newInv = prompt ("What would you like to name your new Inventory Class?");
 
-    floorTen[newInv] = []
+    floorTen.inventories[newInv]=[]
+    // home.floorTen.inventories.push(home.newInv)
 
+    // document.getElementById("demo").innerHTML = newInv;
+    home.newInv=[],
     console.log(newInv)
-    return newInv;
   }
 
+// Add Inventory to Custom Class
+  // function AddItem() {
+  //   floorTen.inventories[home.inv].push(home.newItem);
+  // }
+
+  home.saveAddedCustomInventory = function () {
+    $('#inventoryAdd').modal('hide')
+    // home.glassInventory.push(home.newItem)
+    Reader = new FileReader()
+    Reader.readAsDataURL(document.getElementById("newImage").files[0])
+    Reader.onload = function(REvent) {
+      home.newItem.img = REvent.target.result
+
+    floorTen.inventories[home.inv].push(home.newItem)
+    $scope.$apply();
+
+    home.newItem = {};
+  }
+  }
 
 // Add Inventory
     home.addInventory = function(Item) {
@@ -90,15 +113,17 @@ angular.module("inventory")
       }else
 
       Item.quantity -= Item.pull.qty
+
+      home.newPullSheet = [];
     }
 
     home.savePull = function () {
       $('#pullSave').modal('hide')
       home.pullItems.push(home.newPullSheet)
 
-      home.newPullSheet = {};
+      home.newPullSheet = [];
 
     }
-
+home.newPullSheet = [];
 
 }

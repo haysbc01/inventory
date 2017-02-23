@@ -8,10 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.js"></script>
 
-    <script src="../controllers/module.js" charset="utf-8"></script>
-    <script src="../controllers/controller.home.js"></script>
-    <script src="../factories/factory.inventory.js" charset="utf-8"></script>
-    <script src="../factories/factory.pullSheet.js" charset="utf-8"></script>
+    <script src="/controllers/module.js" charset="utf-8"></script>
+    <script src="/controllers/controller.home.js"></script>
+    <script src="/controllers/controller.pull.js"></script>
+    <script src="/factories/factory.inventory.js" charset="utf-8"></script>
+    <script src="/factories/factory.pullSheet.js" charset="utf-8"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="../main.css">
@@ -30,7 +31,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="heading">{{home.greeting}} : Inventory</h1>
+          <h1 class="heading">{{home.greeting}} Inventory</h1>
         </div>
       </div>
 
@@ -38,7 +39,6 @@
 
         <button class="btn btn-default"type="button" name="button" ng-click="edit =! edit" ng-hide="createPull">Edit Inventory Item</button>
         <button class="btn btn-default"type="button" name="button" ng-click="home.addInventory(addItem)" ng-hide="createPull">Add Item to Inventory</button>
-        <button class="btn btn-default"type="button" name="button" ><a href="pull.html">Create Pull Sheet</a></button>
 
         <div ng-class="{'selected' : createPull}">
 

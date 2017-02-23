@@ -16,14 +16,58 @@ function inventoryFact () {
       disposable : false,
     },
     {
-      name : "frank soup bowls",
-      description : "soup bowls",
+      name : "Water Glasses",
+      description : "water glass",
       img : "https://images.cb2.com/is/image/CB2/FrankSoupBowl7inS8SHF16/$web_product_hero$&/161221153102/frank-soup-bowls-set-of-eight.jpg",
-      quantity : 200,
-      purchasedFrom : "cb2",
+      quantity : 400,
+      purchasedFrom : "libbey",
       itemUrl : "https://www.cb2.com/set-of-8-frank-soup-bowls/s422227",
-      usageRate : 2,
-      otherNames : "soup, bowls, salad",
+      usageRate : 3,
+      otherNames : "water glass",
+      disposable : false,
+    },
+    {
+      name : "White Wine Glasses",
+      description : "",
+      img : "https://images.cb2.com/is/image/CB2/FrankSoupBowl7inS8SHF16/$web_product_hero$&/161221153102/frank-soup-bowls-set-of-eight.jpg",
+      quantity : 150,
+      purchasedFrom : "libbey",
+      itemUrl : "https://www.cb2.com/set-of-8-frank-soup-bowls/s422227",
+      usageRate : 3,
+      otherNames : "",
+      disposable : false,
+    },
+    {
+      name : "Red Wine Glasses",
+      description : "",
+      img : "https://images.cb2.com/is/image/CB2/FrankSoupBowl7inS8SHF16/$web_product_hero$&/161221153102/frank-soup-bowls-set-of-eight.jpg",
+      quantity : 300,
+      purchasedFrom : "libbey",
+      itemUrl : "https://www.cb2.com/set-of-8-frank-soup-bowls/s422227",
+      usageRate : 3,
+      otherNames : "",
+      disposable : false,
+    },
+    {
+      name : "Martini Glasses",
+      description : "",
+      img : "https://images.cb2.com/is/image/CB2/FrankSoupBowl7inS8SHF16/$web_product_hero$&/161221153102/frank-soup-bowls-set-of-eight.jpg",
+      quantity : 40,
+      purchasedFrom : "libbey",
+      itemUrl : "https://www.cb2.com/set-of-8-frank-soup-bowls/s422227",
+      usageRate : 3,
+      otherNames : "",
+      disposable : false,
+    },
+    {
+      name : "Pilsner Glasses",
+      description : "",
+      img : "https://images.cb2.com/is/image/CB2/FrankSoupBowl7inS8SHF16/$web_product_hero$&/161221153102/frank-soup-bowls-set-of-eight.jpg",
+      quantity : 80,
+      purchasedFrom : "libbey",
+      itemUrl : "https://www.cb2.com/set-of-8-frank-soup-bowls/s422227",
+      usageRate : 3,
+      otherNames : "",
       disposable : false,
     },
 
@@ -166,7 +210,12 @@ function inventoryFact () {
     offsite : offsiteStock,
 
 
-    pullList : []
+    inventories : {
+
+    },
+
+
+    pullList : [],
 
   }
 }

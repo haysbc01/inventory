@@ -5,7 +5,7 @@
 
 .logo {
   position: absolute;
-  top: -25px;
+  top: -1vh;
 }
 
 li>a {
@@ -28,7 +28,7 @@ li>a {
 
 .headText {
   position: absolute;
-  top: 30vh;
+  top: 25vh;
   left: 10vw;
   color: white;
 }
@@ -67,6 +67,27 @@ li>a {
   padding-top: 0px;
 }
 
+.container > .heading {
+  color: #26B328;
+  float: right;
+}
+
+
+/*feature*/
+
+.img-left {
+  float: left;
+  margin: 10%;
+  width: 40vw;
+}
+
+.img-right {
+  float: right;
+  margin: 10%;
+  width: 40vw;
+}
+
+
 .button {
   height: 50px;
   margin-left: 10%;
@@ -78,15 +99,26 @@ h4 {
 }
 
 .selected{
-  position: absolute;
+  position: absolute;;
+  background-color: white;
   left: 50%;
-  margin: 0;
-}
+  width: 50%;
+  transform: translateY(-30vh);
+  }
+
 
 .pullSheet {
   position: fixed;
   right: 50%;
   width: 50%;
+  transform: translateY(-30vh);
+}
+
+.pullSheetInventory {
+  position: fixed;
+  right: 50%;
+  width: 50%;
+  transform: translateY(-75%);
 }
 
 .ogPullSheet {
