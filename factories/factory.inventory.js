@@ -165,5 +165,8 @@ function inventoryFact () {
     TandC : tableAndChairStock,
     offsite : offsiteStock,
 
+
+    pullList : []
+
   }
 }

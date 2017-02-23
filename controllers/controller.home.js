@@ -7,7 +7,7 @@ angular.module("inventory")
     var home = this;
 
 
-    home.greeting = "Empyrean In-House Inventory : ";
+    home.greeting = "Empyrean : ";
 
     home.glassInventory = floorTen.glasses;
     home.plateInventory = floorTen.plates;
@@ -16,7 +16,10 @@ angular.module("inventory")
     home.TandCinventory = floorTen.TandC;
     home.offsiteInventory = floorTen.offsite;
 
+    home.newInventory = floorTen.inventoryFact;
+
     home.pullItems = pullSheet.pullSheet;
+    home.pullList = floorTen.pullList;
 
 
 // Edit Inventory
@@ -29,6 +32,17 @@ angular.module("inventory")
     home.saveInventory = function () {
       $('#inventoryEdit').modal('hide')
   }
+
+// Add Inventory Class
+  home.addInventoryClass = function() {
+    var newInv = prompt ("What would you like to name your new Inventory Class?");
+
+    floorTen[newInv] = []
+
+    console.log(newInv)
+    return newInv;
+  }
+
 
 // Add Inventory
     home.addInventory = function(Item) {
@@ -60,18 +74,31 @@ angular.module("inventory")
       $('pullSheet').modal('show')
     }
 
-    home.addToPull = function(pullItem) {
-      home.PullSheet.items.push(home.newPullItem)
 
-      
+    home.addToPull = function(Item){
+      console.log('pulled ...', Item, Item.pull.qty);
+
+      var pullItem = angular.copy(Item)
+        pullItem.qty = Item.pull.qty
+
+      floorTen.pullList.push(pullItem);
+      home.added = true;
+
+      if (Item.pull.qty > Item.quantity) {
+        alert ("Not enough " + Item.name + " in inventory!" );
+        Item.quantity -= Item.pull.qty
+      }else
+
+      Item.quantity -= Item.pull.qty
     }
 
-    // home.addToPull = function(pullItem) {
-    //   home.newPullSheet.items.push(home.newPullItem)
-    //
-    //   home.newPullItem = {};
-    // }
+    home.savePull = function () {
+      $('#pullSave').modal('hide')
+      home.pullItems.push(home.newPullSheet)
 
+      home.newPullSheet = {};
+
+    }
 
 
 }

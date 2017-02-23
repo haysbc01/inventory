@@ -5,7 +5,7 @@
 
 .logo {
   position: absolute;
-  top: 1%;
+  top: -25px;
 }
 
 li>a {
@@ -83,11 +83,24 @@ h4 {
   margin: 0;
 }
 
-#pullSheet {
-  position: absolute;
+.pullSheet {
+  position: fixed;
   right: 50%;
   width: 50%;
 }
+
+.ogPullSheet {
+  position: relative;
+  right: 50%;
+  width: 50%;
+}
+
+#newPullSheet {
+  position: fixed;
+  right: 50%;
+  width: 50%;
+}
+
 
 .pageTitle {
   text-align: center;
@@ -95,4 +108,12 @@ h4 {
 
 .qInput {
   width: 50px;
+}
+
+.pull-modal-body {
+  height: 40vh;
+}
+
+.left {
+  left: 80px;
 }

@@ -5,10 +5,10 @@ function pullSheetFact () {
 
   var pullSheets = [
     {
-      eventName: "",
-      eventDate: "",
-      eventLocation: "",
-      otherInfo: "",
+      eventName: "Hays Wedding",
+      eventDate: "06/20/2017",
+      eventLocation: "26th floor",
+      otherInfo: "Contact Name: Brian Hays",
       items: [
         {
         name: "",
@@ -20,7 +20,7 @@ function pullSheetFact () {
   ]
 
 return  {
-  pullSheet : pullSheets
+  pullSheet : pullSheets,
 }
 
 };

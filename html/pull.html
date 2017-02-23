@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html ng-app="inventory">
+  <head>
+    <meta charset="utf-8">
+    <title>Inventory Shembentory</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.js"></script>
+
+    <script src="../controllers/module.js" charset="utf-8"></script>
+    <script src="../controllers/controller.home.js"></script>
+    <script src="../factories/factory.inventory.js" charset="utf-8"></script>
+    <script src="../factories/factory.pullSheet.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../main.css">
+
+  </head>
+  <body>
+
+    <ul class="nav nav-tabs ">
+      <li role="presentation"><a href="index.html"><img class="logo" src="../images/logo.png" alt="HOME"></a></a</li>
+      <li class="left" role="presentation"><a href="../html/profile.html">Profile</a></li>
+      <li class="left" role="presentation"><a href="../html/inventory.html">Inventory</a></li>
+      <li class="left" role="presentation" class="active"><a href="../html/pull.html">Pull Sheets</a></li>
+    </ul>
+
+    <section ng-controller="HomeController as home">
+
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="heading">{{home.greeting}} : Pull Sheets</h1>
+        </div>
+      </div>
+
+      <div  >
+
+        <button class="btn btn-default" type="button" name="button" ng-click="home.createPull(addPull)">Create Pull Sheet</button>
+
+        <h2>Pull Lists</h2>
+        <div ng-repeat="pullSheet in home.pullItems">
+          <h3>Event Name : {{pullSheet.eventName}} -- Event Date : {{pullSheet.eventDate}} -- Event Location : {{pullSheet.eventLocation}} -- Additional Information : {{pullSheet.otherInfo}}</h3>
+          <button ng-click="viewPull =! viewPull" type="button" name="button">view pull</button>
+        </div>
+
+
+
+
+        <div ng-show="showInv" class="selected">
+
+          <button class="button" type="button" name="button" ng-click="glasses =! glasses"><span class="glyphicon glyphicon-menu-down pull-left"></span>Glassware Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+            <div ng-repeat="glassItem in home.glassInventory">
+              <h4 ng-show="glasses">
+                <img class="col-xs-1 img-responsive" ng-src="{{glassItem.img}}"> Name : {{glassItem.name}} || Quantity : {{glassItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{glassItem.itemUrl}}">{{glassItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="glassItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(glassItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+              </h4>
+            </div>
+
+            <button class="button" type="button" name="button" ng-click="plates =! plates"><span class="glyphicon glyphicon-menu-down pull-left"></span>Plate Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+
+            <div ng-repeat="plateItem in home.plateInventory">
+              <h4 ng-show="plates">
+                <img class="col-xs-1 img-responsive" ng-src="{{plateItem.img}}"> Name : {{plateItem.name}} || Quantity : {{plateItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{plateItem.itemUrl}}">{{plateItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="plateItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class=" btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(plateItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span></button></div>
+              </h4>
+            </div>
+
+            <button class="button" type="button" name="button" ng-click="disposable =! disposable"><span class="glyphicon glyphicon-menu-down pull-left"></span>Disposable Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+
+            <div ng-repeat="disposableItem in home.disInventory">
+              <h4 ng-show="disposable">
+                <img class="col-xs-1 img-responsive" ng-src="{{disposableItem.img}}"> Name : {{disposableItem.name}} || Quantity : {{disposableItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{disposableItem.itemUrl}}">{{disposableItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="disposableItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(disposableItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+              </h4>
+            </div>
+
+            <button class="button" type="button" name="button" ng-click="passing =! passing"><span class="glyphicon glyphicon-menu-down pull-left"></span>Passing Tray Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+
+            <div ng-repeat="passItem in home.passingInventory">
+              <h4 ng-show="passing">
+                <img class="col-xs-1 img-responsive" ng-src="{{passItem.img}}"> Name : {{passItem.name}} || Quantity : {{passItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{passItem.itemUrl}}">{{passItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="passItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(passItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+              </h4>
+            </div>
+
+            <button class="button" type="button" name="button" ng-click="TandC =! TandC"><span class="glyphicon glyphicon-menu-down pull-left"></span>Tables and Chairs Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+
+            <div ng-repeat="TCItem in home.TandCinventory">
+              <h4 ng-show="TandC">
+                <img class="col-xs-1 img-responsive" ng-src="{{TCItem.img}}"> Name : {{TCItem.name}} || Quantity : {{TCItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{TCItem.itemUrl}}">{{TCItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="TCItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(TCItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+              </h4>
+            </div>
+
+            <button class="button" type="button" name="button" ng-click="offsite =! offsite"><span class="glyphicon glyphicon-menu-down pull-left"></span>Offsite Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+
+            <div ng-repeat="offItem in home.offsiteInventory">
+              <h4 ng-show="offsite">
+                <img class="col-xs-1 img-responsive" ng-src="{{offItem.img}}"> Name : {{offItem.name}} || Quantity : {{offItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{offItem.itemUrl}}">{{offItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="offItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="pull-right btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(offItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+              </h4>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+<!-- Pull Sheet -->
+          <div class="modal fade" id="pull" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="pull =! pull">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Pull Sheet</h4>
+                </div>
+                <div class="modal-body">
+
+                  <h6>Event Name : <input ng-model="home.newPullSheet.eventName" type="text" value="Item Name">
+                    Date of Event: <input ng-model="home.newPullSheet.eventDate" type="date" name="" value="">
+                    <br>
+                    Event Location : <input ng-model="home.newPullSheet.eventLocation" type="text">
+                    Additional Information : <input ng-model="home.newPullSheet.otherInfo" type="text"></h6>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button ng-click="home.savePullSheet(); createPull =! createPull; showInv =! showInv" type="button" class="btn btn-primary">Create Pull Sheet</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div ng-show="createPull" class="pullSheet" ng-class="{'ogPullSheet' : add}">
+            <div role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="createPull =! createPull; showInv =! showInv">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel" >Event Name : {{home.newPullSheet.eventName}} ||  Event Date : {{home.newPullSheet.eventDate}}  ||  Location : {{home.newPullSheet.eventLocation}}<br> Additional Information : {{home.newPullSheet.otherInfo}}</h4>
+                </div>
+                <div class="pull-modal-body">
+
+                  <h3 class="pageTitle"><input type="text" name="" value="Page Title" class="pageTitle"></h3>
+                  <div class="" ng-repeat="Item in home.pullList">
+                    {{Item.qty}}  - {{Item.name}}
+
+                    <!-- <h6 ng-repeat="pullItem in pull.pullList" ng-model="pullItem"> {{pullItem.qty}} - {{pullItem.name}}</h6> -->
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button ng-click="add =! add" type="button" name="button" class="btn btn-primary pull-left">Add Page</button>
+                  <button ng-click="home.savePull(); createPull =! createPull; showInv =! showInv" type="button" class="btn btn-primary">Finalize Pull Sheet</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+<!-- view PullSheet -->
+
+          <div ng-show="viewPull" class="viewPull">
+            <div role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="viewPull =! viewPull">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel" >Event Name : {{home.newPullSheet.eventName}} ||  Event Date : {{home.newPullSheet.eventDate}}  ||  Location : {{home.newPullSheet.eventLocation}}<br> Additional Information : {{home.newPullSheet.otherInfo}}</h4>
+                </div>
+                <div class="pull-modal-body">
+
+                  <h3 class="pageTitle"><input type="text" name="" value="Page Title" class="pageTitle"></h3>
+                  <div class="" ng-repeat="Item in home.pullList">
+                    {{Item.qty}}  - {{Item.name}}
+
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button ng-click="viewPull =! viewPull" type="button" class="btn btn-primary">exit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+</section>
+
+<!-- <section ng-controller="PullController as pull">
+
+</section> -->
+
+  </body>
+</html>
