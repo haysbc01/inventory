@@ -60,7 +60,8 @@ li>a {
   text-align: center;
 }
 
-.homeDiv {
+.homeDiv > p {
+  padding: 10px;
 }
 
 .jumbotron{
