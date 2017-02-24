@@ -6,9 +6,9 @@ function pullSheetFact () {
   var pullSheets = [
     {
       eventName: "Hays Wedding",
-      eventDate: "06/20/2017",
-      eventLocation: "26th floor",
-      otherInfo: "Contact Name: Brian Hays",
+      eventDate: "05/24/2015",
+      eventLocation: "12 Corners Winery",
+      otherInfo: "Contact: Brian Hays",
       items: [
         {
         name: "",

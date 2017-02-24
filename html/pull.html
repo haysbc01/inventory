@@ -30,7 +30,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="heading">{{home.greeting}} Pull Sheets</h1>
+          <h1 class="heading">Pull Sheets</h1>
         </div>
       </div>
 
@@ -39,20 +39,23 @@
         <button class="btn btn-default" type="button" name="button" ng-click="home.createPull(addPull)">Create Pull Sheet</button>
 
         <h2>Pull Lists</h2>
-        <div ng-repeat="pullSheet in home.pullItems">
-          <h3>Event Name : {{pullSheet.eventName}} -- Event Date : {{pullSheet.eventDate | date}} -- Event Location : {{pullSheet.eventLocation}} -- Additional Information : {{pullSheet.otherInfo}}</h3>
-          <button ng-click="viewPull =! viewPull" type="button" name="button">view pull</button>
+        <div ng-repeat="pullSheet in home.pullItems" class="col-md-4">
+          <h3>Event Name : <span class="text-body">{{pullSheet.eventName}}</span>
+          <br>Event Date : <span class="text-body">{{pullSheet.eventDate | date}}</span>
+          <br>Event Location : <span class="text-body">{{pullSheet.eventLocation}}</span>
+          <br>Additional Information : <span class="text-body">{{pullSheet.otherInfo}}</span></h3>
+          <button ng-click="home.showPullList =! home.showPullList" type="button" name="button">view pull</button>
         </div>
 
 
 
 
-        <div ng-show="showInv" class="selected">
+        <div ng-show="home.showPullList" class="selected">
 
           <button class="button" type="button" name="button" ng-click="glasses =! glasses"><span class="glyphicon glyphicon-menu-down pull-left"></span>Glassware Inventory<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
             <div ng-repeat="glassItem in home.glassInventory">
               <h4 ng-show="glasses">
-                <img class="col-xs-1 img-responsive" ng-src="{{glassItem.img}}"> Name : {{glassItem.name}} || Quantity : {{glassItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{glassItem.itemUrl}}">{{glassItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="glassItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(glassItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{glassItem.img}}"> Name : {{glassItem.name}} || Quantity : {{glassItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{glassItem.itemUrl}}">{{glassItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="glassItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(glassItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
               </h4>
             </div>
 
@@ -60,7 +63,7 @@
 
             <div ng-repeat="plateItem in home.plateInventory">
               <h4 ng-show="plates">
-                <img class="col-xs-1 img-responsive" ng-src="{{plateItem.img}}"> Name : {{plateItem.name}} || Quantity : {{plateItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{plateItem.itemUrl}}">{{plateItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="plateItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class=" btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(plateItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{plateItem.img}}"> Name : {{plateItem.name}} || Quantity : {{plateItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{plateItem.itemUrl}}">{{plateItem.purchasedFrom}}</a> </span><div class="pull-right"><input ng-model="plateItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class=" btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(plateItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span></button></div>
               </h4>
             </div>
 
@@ -68,7 +71,7 @@
 
             <div ng-repeat="disposableItem in home.disInventory">
               <h4 ng-show="disposable">
-                <img class="col-xs-1 img-responsive" ng-src="{{disposableItem.img}}"> Name : {{disposableItem.name}} || Quantity : {{disposableItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{disposableItem.itemUrl}}">{{disposableItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="disposableItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(disposableItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{disposableItem.img}}"> Name : {{disposableItem.name}} || Quantity : {{disposableItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{disposableItem.itemUrl}}">{{disposableItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="disposableItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(disposableItem); Pulled =! Pulled"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
               </h4>
             </div>
 
@@ -76,7 +79,7 @@
 
             <div ng-repeat="passItem in home.passingInventory">
               <h4 ng-show="passing">
-                <img class="col-xs-1 img-responsive" ng-src="{{passItem.img}}"> Name : {{passItem.name}} || Quantity : {{passItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{passItem.itemUrl}}">{{passItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="passItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(passItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{passItem.img}}"> Name : {{passItem.name}} || Quantity : {{passItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{passItem.itemUrl}}">{{passItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="passItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(passItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
               </h4>
             </div>
 
@@ -84,7 +87,7 @@
 
             <div ng-repeat="TCItem in home.TandCinventory">
               <h4 ng-show="TandC">
-                <img class="col-xs-1 img-responsive" ng-src="{{TCItem.img}}"> Name : {{TCItem.name}} || Quantity : {{TCItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{TCItem.itemUrl}}">{{TCItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="TCItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(TCItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{TCItem.img}}"> Name : {{TCItem.name}} || Quantity : {{TCItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{TCItem.itemUrl}}">{{TCItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="TCItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(TCItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
               </h4>
             </div>
 
@@ -92,7 +95,7 @@
 
             <div ng-repeat="offItem in home.offsiteInventory">
               <h4 ng-show="offsite">
-                <img class="col-xs-1 img-responsive" ng-src="{{offItem.img}}"> Name : {{offItem.name}} || Quantity : {{offItem.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{offItem.itemUrl}}">{{offItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="offItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="pull-right btn btn-primary" ng-show="createPull" ng-hide="Pulled" ng-click="home.addToPull(offItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                <img class="col-xs-1 img-responsive" ng-src="{{offItem.img}}"> Name : {{offItem.name}} || Quantity : {{offItem.quantity}} <span ng-hide="home.showPullList">||  Company Purchased From : <a href="{{offItem.itemUrl}}">{{offItem.purchasedFrom}}</a></span><div class="pull-right"><input ng-model="offItem.pull.qty" ng-hide="Pulled" class="qInput" type="number" name="" value="" placeholder="Qty."><button class="pull-right btn btn-primary" ng-show="home.showPullList" ng-hide="Pulled" ng-click="home.addToPull(offItem); Pulled =! Pulled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
               </h4>
             </div>
 
@@ -121,18 +124,18 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button ng-click="home.savePullSheet(); createPull =! createPull; showInv =! showInv" type="button" class="btn btn-primary">Create Pull Sheet</button>
+                  <button ng-click="home.savePullSheet(); home.showPullList =! home.showPullList; " type="button" class="btn btn-primary">Create Pull Sheet</button>
                 </div>
               </div>
             </div>
           </div>
 
 
-          <div ng-show="createPull" class="pullSheet" ng-class="{'ogPullSheet' : add}">
+          <div ng-show="home.showPullList" class="pullSheet" ng-class="{'ogPullSheet' : add}">
             <div role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="createPull =! createPull; showInv =! showInv">&times;</span></button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="home.showPullList =! home.showPullList;">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel" >Event Name : {{home.newPullSheet.eventName}} ||  Event Date : {{home.newPullSheet.eventDate | date}}  ||  Location : {{home.newPullSheet.eventLocation}}<br> Additional Information : {{home.newPullSheet.otherInfo}}</h4>
                 </div>
                 <div class="pull-modal-body">
@@ -146,8 +149,8 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button ng-click="add =! add" type="button" name="button" class="btn btn-primary pull-left">Add Page</button>
-                  <button ng-click="home.savePull(); createPull =! createPull; showInv =! showInv" type="button" class="btn btn-primary">Finalize Pull Sheet</button>
+                  <!-- <button ng-click="add =! add" type="button" name="button" class="btn btn-primary pull-left">Add Page</button> -->
+                  <button ng-click="home.savePull(); home.showPullList =! home.showPullList;" type="button" class="btn btn-primary">Finalize Pull Sheet</button>
                 </div>
               </div>
             </div>
@@ -155,7 +158,7 @@
 
 
 
-<!-- view PullSheet -->
+<!-- create PullSheet -->
 
           <div ng-show="viewPull" class="viewPull">
             <div role="document">
@@ -179,6 +182,7 @@
               </div>
             </div>
           </div>
+
 
 </section>
 

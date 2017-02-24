@@ -170,3 +170,8 @@ h4 {
   text-align: center;
   margin-top: 10%;
 }*/
+
+.text-body {
+  font-size: 18px;
+  color: red;
+}

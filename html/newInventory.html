@@ -45,10 +45,10 @@
 
       <div class="" ng-repeat="(ListDrop, ListArray) in home.floorTen">
 
-        <button ng-model="home.newItem" class="button" type="button" name="button" ><span class="glyphicon glyphicon-menu-down pull-left"></span> <span>{{ListDrop}}</span><span class="glyphicon glyphicon-menu-down pull-right"></span></button>
+        <button ng-model="home.newItem" class="button" type="button" name="button" ng-click="ListArray.show =! ListArray.show" ><span ng-hide="ListArray.show" class="glyphicon glyphicon-menu-down pull-left"></span> <span ng-show="ListArray.show" class="glyphicon glyphicon-menu-up pull-left"></span><span>{{ListDrop}}</span><span ng-hide="ListArray.show" class="glyphicon glyphicon-menu-down pull-right"></span><span ng-show="ListArray.show" class="glyphicon glyphicon-menu-up pull-right"></span></button>
 
-        <div class="" ng-repeat="item in ListArray">
-          <img class="col-xs-1 img-responsive" ng-src="{{item.img}}"> Name : {{item.name}} || Quantity : {{item.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{item.itemUrl}}">{{item.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{item.name}}</button>
+        <div class="" ng-repeat="item in ListArray" ng-show="ListArray.show" >
+          <img class="col-xs-1 img-responsive" ng-src="{{item.img}}" > Name : {{item.name}} || Quantity : {{item.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{item.itemUrl}}">{{item.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{item.name}}</button>
         </div>
 
       </div>
@@ -116,7 +116,7 @@
                 <div class="modal-body">
 
                   <h6>Item Name : <input ng-model="home.newItem.name" type="text" value="Item Name"></h6>
-                  <!-- <h6>Upload Image or Copy Image URL :  <input id="newImage" type="file" name="" value=""> or <input ng-model="home.newItem.img" type="text" name="" value=""></h6> -->
+                  <h6>Upload Image or Copy Image URL : <input ng-model="home.newItem.img" type="text" name="" value=""></h6>
                   <h6>Quantity :  <input ng-model="home.newItem.quantity" type="text"></h6>
                   <h6>Purchased From :  <input ng-model="home.newItem.purchasedFrom" type="text"></h6>
                   <h6>Item Url :  <input ng-model="home.newItem.itemUrl" type="text"></h6>

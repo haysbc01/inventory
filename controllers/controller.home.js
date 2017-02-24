@@ -48,23 +48,22 @@ angular.module("inventory")
   }
 
 // Add Inventory to Custom Class
-  // function AddItem() {
-  //   floorTen.inventories[home.inv].push(home.newItem);
-  // }
+
 
   home.saveAddedCustomInventory = function () {
     $('#inventoryAdd').modal('hide')
     // home.glassInventory.push(home.newItem)
-    Reader = new FileReader()
-    Reader.readAsDataURL(document.getElementById("newImage").files[0])
-    Reader.onload = function(REvent) {
-      home.newItem.img = REvent.target.result
+
+    // Reader = new FileReader()
+    // Reader.readAsDataURL(document.getElementById("newImage").files[0])
+    // Reader.onload = function(REvent) {
+    //   home.newItem.img = REvent.target.result
 
     floorTen.inventories[home.inv].push(home.newItem)
-    $scope.$apply();
+    // $scope.$apply();
 
     home.newItem = {};
-  }
+  // }
   }
 
 // Add Inventory
@@ -95,6 +94,7 @@ angular.module("inventory")
     home.savePullSheet = function () {
       $('#pull').modal('hide')
       $('pullSheet').modal('show')
+
     }
 
 
@@ -114,7 +114,7 @@ angular.module("inventory")
 
       Item.quantity -= Item.pull.qty
 
-      home.newPullSheet = [];
+      // home.newPullSheet = [];
     }
 
     home.savePull = function () {
