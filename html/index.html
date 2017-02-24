@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="inventory">
   <head>
     <meta charset="utf-8">
     <title>Inventory Shembentory</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.js"></script>
+
+    <script src="/controllers/module.js" charset="utf-8"></script>
+    <script src="/controllers/controller.home.js"></script>
+    <script src="/controllers/controller.pull.js"></script>
+    <script src="/factories/factory.inventory.js" charset="utf-8"></script>
+    <script src="/factories/factory.pullSheet.js" charset="utf-8"></script>
+
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
   </head>
-  <body>
+  <body ng-controller="HomeController as home">
 
 
     <ul class="nav nav-tabs ">
@@ -15,8 +25,8 @@
       <li class="left" role="presentation"><a href="../html/features.html">Features</a></li>
       <li class="left" role="presentation"><a href="">Customers</a></li>
 
-      <li class="pull-right" role="presentation"><a href="../html/newInventory.html"><button class="signUp" type="button" name="button">Sign Up</button></a></li>
-      <li class="pull-right" role="presentation"><a href="../html/profile.html">Login</a></li>
+      <li class="pull-right" role="presentation" ng-click="home.addInventory(addItem)"><a href="#"><button  class="signUp" type="button" name="button">Sign Up</button></a></li>
+      <li class="pull-right" role="presentation"><a href="../html/inventory.html">Login</a></li>
     </ul>
 
     <div class="headImg">
@@ -26,7 +36,7 @@
 
         <h2>Free Trial</h2>
         <h4>Try 30 days free of charge!</h4>
-        <br><button type="button" name="button">Sign Up Now</button>
+        <br><button ng-click="home.addInventory(addItem)" type="button" name="button">Sign Up Now</button>
       </div>
     </div>
 
@@ -47,6 +57,38 @@
       <div class="homeDiv col-xs-">
         <img class="homeImages"src="../images/stock-photo-test-task-glyph-icon-this-rounded-flat-symbol-is-drawn-with-blue-and-gray-colors-on-a-white-308046338.png" alt="">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      </div>
+    </div>
+
+
+<!-- signUp     -->
+
+
+
+    <div class="modal fade" id="inventoryAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Thank You for Signing Up!</h4>
+          </div>
+          <div class="modal-body">
+
+            <h4>Please fill out the form and click submit.</h4>
+
+            <h6>First Name : <input  type="text" value=""></h6>
+            <h6>Last Name : <input  type="text"></h6>
+            <h6>Company Name :<input type="text"></h6>
+            <h6>Enter Password :<input type="password"></h6>
+            <h6>Confirm Password :<input type="password"></h6>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <a href="newInventory.html"><button type="button" class="btn btn-primary">Submit</button></a>
+          </div>
+        </div>
       </div>
     </div>
 

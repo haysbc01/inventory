@@ -69,7 +69,7 @@ li>a {
 
 .container > .heading {
   color: #26B328;
-  float: right;
+  text-align: center;
 }
 
 
@@ -149,3 +149,24 @@ h4 {
 .left {
   left: 80px;
 }
+
+/*.invLeft {
+  position: absolute;
+  left: 20vw;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.middle {
+  position: absolute;
+  left: 50vw;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.right {
+  position: absolute;
+  left: 70vw;
+  text-align: center;
+  margin-top: 10%;
+}*/

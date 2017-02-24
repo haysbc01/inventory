@@ -30,7 +30,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="heading">{{home.greeting}} : Pull Sheets</h1>
+          <h1 class="heading">{{home.greeting}} Pull Sheets</h1>
         </div>
       </div>
 
@@ -40,7 +40,7 @@
 
         <h2>Pull Lists</h2>
         <div ng-repeat="pullSheet in home.pullItems">
-          <h3>Event Name : {{pullSheet.eventName}} -- Event Date : {{pullSheet.eventDate}} -- Event Location : {{pullSheet.eventLocation}} -- Additional Information : {{pullSheet.otherInfo}}</h3>
+          <h3>Event Name : {{pullSheet.eventName}} -- Event Date : {{pullSheet.eventDate | date}} -- Event Location : {{pullSheet.eventLocation}} -- Additional Information : {{pullSheet.otherInfo}}</h3>
           <button ng-click="viewPull =! viewPull" type="button" name="button">view pull</button>
         </div>
 
@@ -133,7 +133,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ng-click="createPull =! createPull; showInv =! showInv">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel" >Event Name : {{home.newPullSheet.eventName}} ||  Event Date : {{home.newPullSheet.eventDate}}  ||  Location : {{home.newPullSheet.eventLocation}}<br> Additional Information : {{home.newPullSheet.otherInfo}}</h4>
+                  <h4 class="modal-title" id="myModalLabel" >Event Name : {{home.newPullSheet.eventName}} ||  Event Date : {{home.newPullSheet.eventDate | date}}  ||  Location : {{home.newPullSheet.eventLocation}}<br> Additional Information : {{home.newPullSheet.otherInfo}}</h4>
                 </div>
                 <div class="pull-modal-body">
 

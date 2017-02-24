@@ -30,7 +30,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="heading">{{home.greeting}} Inventory</h1>
+          <h1 class="heading">Inventory</h1>
         </div>
       </div>
 
@@ -48,7 +48,7 @@
         <button ng-model="home.newItem" class="button" type="button" name="button" ><span class="glyphicon glyphicon-menu-down pull-left"></span> <span>{{ListDrop}}</span><span class="glyphicon glyphicon-menu-down pull-right"></span></button>
 
         <div class="" ng-repeat="item in ListArray">
-          <img class="col-xs-1 img-responsive" ng-src="{{ListArray.img}}"> Name : {{ListArray.name}} || Quantity : {{ListArray.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{ListArray.itemUrl}}">{{ListArray.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{ListArray.name}}</button>
+          <img class="col-xs-1 img-responsive" ng-src="{{item.img}}"> Name : {{item.name}} || Quantity : {{item.quantity}} <span ng-hide="createPull">||  Company Purchased From : <a href="{{item.itemUrl}}">{{item.purchasedFrom}}</a> </span><button ng-model="pullItem" class="pull-right" ng-show="edit" ng-click="home.editInventory(item)">Edit: {{item.name}}</button>
         </div>
 
       </div>
@@ -116,7 +116,7 @@
                 <div class="modal-body">
 
                   <h6>Item Name : <input ng-model="home.newItem.name" type="text" value="Item Name"></h6>
-                  <h6>Upload Image or Copy Image URL :  <input id="newImage" type="file" name="" value=""> or <input ng-model="home.newItem.img" type="text" name="" value=""></h6>
+                  <!-- <h6>Upload Image or Copy Image URL :  <input id="newImage" type="file" name="" value=""> or <input ng-model="home.newItem.img" type="text" name="" value=""></h6> -->
                   <h6>Quantity :  <input ng-model="home.newItem.quantity" type="text"></h6>
                   <h6>Purchased From :  <input ng-model="home.newItem.purchasedFrom" type="text"></h6>
                   <h6>Item Url :  <input ng-model="home.newItem.itemUrl" type="text"></h6>
@@ -126,11 +126,10 @@
                   <h6>Disposable :  <input ng-model="home.newItem.disposable" type="checkbox"></h6>
 
               <!-- modal dropdown -->
-                  <h6>New Item Category : </h6><select ng-model="home.inv">
-                    <div class="" ng-repeat="(ListDrop, ListArray) in home.floorTen">
+                  <h6>New Item Category : </h6>
+                  <select ng-model="home.inv">
+                      <option ng-repeat="(ListDrop, ListArray) in home.floorTen"  value="{{ListDrop}}">{{ListDrop}}</option>
 
-                      <option ng-model="home.inv" value="{{ListDrop}}">{{ListDrop}}</option>
-                    </div>
                   </select>
 
 
